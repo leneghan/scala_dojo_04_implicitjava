@@ -13,7 +13,7 @@ final public class DataSource {
         this.users = users;
     }
     
-    public List findUsers(Predicate<User> predicate){
+    public List<User> findUsers(Predicate<User> predicate){
         List<User> found = new ArrayList<User>();
         for(User user : users){
             if(predicate.apply(user)){
