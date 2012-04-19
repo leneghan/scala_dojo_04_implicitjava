@@ -2,13 +2,13 @@ package dojo
 
 import java.util.{ArrayList, List}
 
-class UserLookup(dataSource :DataSource) {
+class UserLookup(dataSource :DataSource) extends JUserLookup {
   
-  def olderThan(age :Int) = new ArrayList[Int]()
+  def olderThan(age :Int): List[User] = new ArrayList[User]()
 
   def namesYoungerThan(age: Int):List[String] = new ArrayList[String]()
 
-  def allFemale() = new ArrayList[User]()
+  def allFemale(): List[String] = new ArrayList[String]()
 
   def allEligible() = new ArrayList[User]()
 

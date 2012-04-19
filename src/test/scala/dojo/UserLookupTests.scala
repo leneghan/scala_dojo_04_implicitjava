@@ -57,8 +57,8 @@ class UserLookupTests extends FunSuite with ShouldMatchers{
   
   test("return all eligible users"){
 
-    val expectedUsers = new ArrayList[String]();
-    expectedUsers.add("john")
+    val expectedUsers = new ArrayList[User]();
+    expectedUsers.add(new User(4,"john", true, 40))
 
     val userLookup = new UserLookup(dataSource)
     userLookup allEligible() should equal (expectedUsers)
