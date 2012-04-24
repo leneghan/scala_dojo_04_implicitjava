@@ -10,4 +10,11 @@ object ImplicitJava {
       }
   }
 
+  implicit def userToExtendedUserImplicit(user : User) : ExtendedUser =
+  {
+    new ExtendedUser(user.getId(), user.getName, user.isMale, user.getAge());
+
+  }
+  //implicit def asJavaIterator[A](i : scala.collection.Iterator[A]) : java.util.Iterator[A] = { /* compiled code */ }
+  
 }

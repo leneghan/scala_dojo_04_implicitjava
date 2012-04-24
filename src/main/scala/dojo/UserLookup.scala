@@ -1,7 +1,7 @@
 package dojo
 
 import java.util.{ArrayList, List}
-import dojo.ImplicitJava.funcToPred
+import dojo.ImplicitJava._
 import collection.JavaConversions._
 
 class UserLookup(dataSource :DataSource) extends JUserLookup {
@@ -33,6 +33,9 @@ class UserLookup(dataSource :DataSource) extends JUserLookup {
     dataSource.findUsers(func).map((user: User) => user.getName())
   }
 
-  def allEligible() = new ArrayList[User]()
+  /**
+   * filters on isEligible by use of the userToExtendedUserImplicit function
+   */
+  def allEligible() = dataSource.findUsers((user : User) => user.isEligible())
 
 }
