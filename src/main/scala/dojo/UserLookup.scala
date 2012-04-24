@@ -14,9 +14,15 @@ class UserLookup(dataSource :DataSource) extends JUserLookup {
   /*
       Are there standard JavaConversions to make it easier to work with Java collections?
    */
-  def namesYoungerThan(age: Int):List[String] = new ArrayList[String]()
 
-  def allFemale(): List[String] = new ArrayList[String]()
+  def namesYoungerThan(age: Int):List[String] =
+    dataSource.findUsers((user:User) => user.getAge < age).
+      map((user:User) => user.getName())
+
+  def allFemale(): List[String] = {
+    dataSource.findUsers((user: User) => !user.isMale()).
+      map((user: User) => user.getName())
+  }
 
   def allEligible() = new ArrayList[User]()
 
