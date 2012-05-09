@@ -1,11 +1,16 @@
 package dojo
 
 import com.google.common.base.Predicate
+import com.google.common.base.Function
 
 object ImplicitJava {
 
-  def funcToPred(function: (User) => Boolean) : Predicate[User] = new Predicate[User]{
-    def apply(input:User) = function(input)
+  implicit def funcToPred[A](function: (A) => Boolean): Predicate[A] = new Predicate[A] {
+    def apply(input: A) = function(input)
+  }
+
+  implicit def funcToFunc[A, B](function: (A) => B): Function[A, B] = new Function[A, B] {
+    def apply(input: A) = function(input)
   }
 
 }
